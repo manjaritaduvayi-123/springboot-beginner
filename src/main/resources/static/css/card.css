@@ -1,0 +1,52 @@
+.card{
+    width: 250px;
+    border: 1px solid gray;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: white;
+}
+
+
+/* IMAGE */
+.card img{
+    width: 100%;
+}
+
+
+/* CARD CONTENT */
+.card-content{
+    padding: 15px;
+}
+
+
+/* NAME */
+#userName{
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: brown;
+}
+
+
+/* GENDER */
+#userGender{
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+
+/* BUTTON */
+button{
+    padding: 8px 15px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+
+button:hover{
+    background-color: #444;
+}

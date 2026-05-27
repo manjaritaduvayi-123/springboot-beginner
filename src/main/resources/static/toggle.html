@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Toggle</title>
+
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/card.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+
+        <a href="index.html">Home</a>
+
+        <a href="card.html">Card</a>
+
+        <a class="active" href="toggle.html">Toggle</a>
+
+        <a href="#">Contact</a>
+
+    </div>
+
+
+    <!-- CARD -->
+    <div class="card">
+
+        <img
+            id="userImage"
+            src="img/john_doe.png"
+            alt="Profile"
+        >
+
+        <div class="card-content">
+
+            <h2 id="userName">
+                John Doe
+            </h2>
+
+            <p id="userGender">
+                Male
+            </p>
+
+            <button onclick="toggleUser()">
+                Toggle
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="js/toggle.js"></script>
+
+</body>
+
+</html>

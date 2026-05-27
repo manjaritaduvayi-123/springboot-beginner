@@ -1,101 +1,33 @@
 body{
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
     margin: 0;
+    font-family: Arial;
+    background-color: #ececec;
 }
+
 
 /* NAVBAR */
 .navbar{
-    background-color: #444;
+    background-color: #3f3f3f;
     overflow: hidden;
 }
 
+
+/* NAVBAR LINKS */
 .navbar a{
     float: left;
     color: white;
     text-decoration: none;
     padding: 14px 20px;
-    font-size: 18px;
 }
 
-/* ACTIVE MENU */
+
+/* ACTIVE LINK */
 .navbar a.active{
-    background-color: #777;
+    background-color: #5a5a5a;
 }
 
-/* HOVER EFFECT */
+
+/* HOVER */
 .navbar a:hover{
-    background-color: #666;
-}
-
-/* MAIN CONTENT */
-.main{
-    text-align: center;
-    margin-top: 40px;
-}
-
-/* HEADING */
-h2{
-    color: brown;
-    margin-bottom: 20px;
-}
-
-/* PROFILE CARD */
-.card{
-    width: 300px;
-    margin: auto;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
-    overflow: hidden;
-    padding-bottom: 20px;
-
-    transition: transform 0.3s ease;
-}
-
-.card:hover{
-    transform: scale(1.03);
-}
-
-.card img{
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    margin-top: 20px;
-    border-radius: 50%;
-    border: 4px solid #ddd;
-}
-
-.container{
-    padding: 10px;
-}
-
-#userName{
-    font-size: 30px;
-    margin-bottom: 10px;
-}
-
-#userGender{
-    color: blue;
-    font-size: 22px;
-}
-
-/* BUTTON */
-button{
-    margin-top: 20px;
-    padding: 12px 28px;
-    font-size: 18px;
-    border: none;
-    border-radius: 8px;
-    background-color: black;
-    color: white;
-    cursor: pointer;
-
-    transition: background-color 0.3s ease,
-                transform 0.2s ease;
-}
-
-button:hover{
-    background-color: gray;
-    transform: scale(1.05);
+    background-color: #6f6f6f;
 }

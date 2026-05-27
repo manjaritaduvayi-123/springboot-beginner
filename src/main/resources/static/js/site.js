@@ -1,25 +1,28 @@
-function generateRandomProfile(){
+function toggleProfile(){
 
-    const maleImage =
-        "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+    let currentName =
+    document.getElementById("userName").innerText;
 
-    const femaleImage =
-        "https://cdn-icons-png.flaticon.com/512/4140/4140048.png";
+    if(currentName === "Jane Doe"){
 
-    let random = Math.floor(Math.random() * 2);
+        document.getElementById("userImage").src =
+        "img/john_doe.png";
 
-    if(random === 0){
+        document.getElementById("userName").innerText =
+        "John Doe";
 
-        document.getElementById("userImage").src = maleImage;
-        document.getElementById("userName").innerText = "John";
-        document.getElementById("userGender").innerText = "Male";
-
+        document.getElementById("userGender").innerText =
+        "Male";
     }
     else{
 
-        document.getElementById("userImage").src = femaleImage;
-        document.getElementById("userName").innerText = "Emma";
-        document.getElementById("userGender").innerText = "Female";
+        document.getElementById("userImage").src =
+        "img/jane_doe.png";
 
+        document.getElementById("userName").innerText =
+        "Jane Doe";
+
+        document.getElementById("userGender").innerText =
+        "Female";
     }
 }
