@@ -1,15 +1,46 @@
 body{
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
+    margin: 0;
+}
+
+/* NAVBAR */
+.navbar{
+    background-color: #444;
+    overflow: hidden;
+}
+
+.navbar a{
+    float: left;
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    font-size: 18px;
+}
+
+/* ACTIVE MENU */
+.navbar a.active{
+    background-color: #777;
+}
+
+/* HOVER EFFECT */
+.navbar a:hover{
+    background-color: #666;
+}
+
+/* MAIN CONTENT */
+.main{
     text-align: center;
     margin-top: 40px;
 }
 
+/* HEADING */
 h2{
     color: brown;
     margin-bottom: 20px;
 }
 
+/* PROFILE CARD */
 .card{
     width: 300px;
     margin: auto;
@@ -49,6 +80,7 @@ h2{
     font-size: 22px;
 }
 
+/* BUTTON */
 button{
     margin-top: 20px;
     padding: 12px 28px;

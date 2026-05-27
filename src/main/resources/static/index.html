@@ -9,24 +9,37 @@
 </head>
 <body>
 
-    <h2>Profile Card</h2>
-
-    <div class="card">
-
-        <img id="userImage"
-             src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-             alt="Profile Image">
-
-        <div class="container">
-            <h4 id="userName">John</h4>
-            <p id="userGender">Male</p>
-        </div>
-
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <a class="active" href="#">Home</a>
+        <a href="#">News</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
     </div>
 
-    <button onclick="generateRandomProfile()">
-        Random Profile
-    </button>
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <h2>Profile Card</h2>
+
+        <div class="card">
+
+            <img id="userImage"
+                 src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                 alt="Profile Image">
+
+            <div class="container">
+                <h4 id="userName">John</h4>
+                <p id="userGender">Male</p>
+            </div>
+
+        </div>
+
+        <button onclick="generateRandomProfile()">
+            Random Profile
+        </button>
+
+    </div>
 
     <script src="js/site.js"></script>
 

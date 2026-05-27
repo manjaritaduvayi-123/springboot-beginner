@@ -1,43 +1,25 @@
-const users = [
-    {
-        name: "John",
-        gender: "Male",
-        img: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-    },
-    {
-        name: "Jane",
-        gender: "Female",
-        img: "https://cdn-icons-png.flaticon.com/512/6997/6997662.png"
-    },
-    {
-        name: "David",
-        gender: "Male",
-        img: "https://cdn-icons-png.flaticon.com/512/4140/4140048.png"
-    },
-    {
-        name: "Emily",
-        gender: "Female",
-        img: "https://cdn-icons-png.flaticon.com/512/4140/4140051.png"
-    },
-    {
-        name: "Michael",
-        gender: "Male",
-        img: "https://cdn-icons-png.flaticon.com/512/4140/4140037.png"
-    },
-    {
-        name: "Sophia",
-        gender: "Female",
-        img: "https://cdn-icons-png.flaticon.com/512/4140/4140047.png"
-    }
-];
-
 function generateRandomProfile(){
 
-    let randomIndex = Math.floor(Math.random() * users.length);
+    const maleImage =
+        "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
 
-    let user = users[randomIndex];
+    const femaleImage =
+        "https://cdn-icons-png.flaticon.com/512/4140/4140048.png";
 
-    document.getElementById("userImage").src = user.img;
-    document.getElementById("userName").innerHTML = user.name;
-    document.getElementById("userGender").innerHTML = user.gender;
+    let random = Math.floor(Math.random() * 2);
+
+    if(random === 0){
+
+        document.getElementById("userImage").src = maleImage;
+        document.getElementById("userName").innerText = "John";
+        document.getElementById("userGender").innerText = "Male";
+
+    }
+    else{
+
+        document.getElementById("userImage").src = femaleImage;
+        document.getElementById("userName").innerText = "Emma";
+        document.getElementById("userGender").innerText = "Female";
+
+    }
 }
