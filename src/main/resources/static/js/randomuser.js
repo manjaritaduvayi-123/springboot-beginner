@@ -1,5 +1,3 @@
-var currentUserIndex = 0;
-
 var userArray = [
 
     {
@@ -12,22 +10,33 @@ var userArray = [
         "name": "Jane Doe",
         "gender": "Female",
         "image": "img/jane_doe.png"
+    },
+
+    {
+        "name": "Alex Smith",
+        "gender": "Male",
+        "image": "img/john_doe.png"
+    },
+
+    {
+        "name": "Emily Johnson",
+        "gender": "Female",
+        "image": "img/jane_doe.png"
     }
 
 ];
 
-function toggleUser(){
+function generateRandomUser(){
 
-    currentUserIndex++;
+    var randomIndex =
+    Math.floor(
+        Math.random() * userArray.length
+    );
 
-    if(currentUserIndex >= userArray.length){
-        currentUserIndex = 0;
-    }
+    var randomUser =
+    userArray[randomIndex];
 
-    var nextUser =
-    userArray[currentUserIndex];
-
-    displayUser(nextUser);
+    displayUser(randomUser);
 }
 
 function displayUser(user){

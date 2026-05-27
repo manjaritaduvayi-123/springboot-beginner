@@ -4,15 +4,11 @@ body{
     background-color: #ececec;
 }
 
-
-/* NAVBAR */
 .navbar{
     background-color: #3f3f3f;
     overflow: hidden;
 }
 
-
-/* NAVBAR LINKS */
 .navbar a{
     float: left;
     color: white;
@@ -20,14 +16,10 @@ body{
     padding: 14px 20px;
 }
 
-
-/* ACTIVE LINK */
 .navbar a.active{
     background-color: #5a5a5a;
 }
 
-
-/* HOVER */
 .navbar a:hover{
     background-color: #6f6f6f;
 }

@@ -7,7 +7,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Card</title>
+    <title>Random User</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/site.css">
@@ -24,8 +24,7 @@
             Home
         </a>
 
-        <a class="active"
-           href="card.html">
+        <a href="card.html">
             Card
         </a>
 
@@ -33,7 +32,8 @@
             Toggle
         </a>
 
-        <a href="randomuser.html">
+        <a class="active"
+           href="randomuser.html">
             Next Random User
         </a>
 
@@ -43,24 +43,36 @@
     <!-- PROFILE CARD -->
     <div class="card">
 
+        <!-- IMAGE -->
         <img
-            src="img/john_doe.png"
+            id="userImage"
+            src="img/jane_doe.png"
             alt="Profile"
         >
 
+        <!-- CONTENT -->
         <div class="card-content">
 
-            <h2>
-                John Doe
+            <h2 id="userName">
+                Jane Doe
             </h2>
 
-            <p>
-                Male
+            <p id="userGender">
+                Female
             </p>
+
+            <button onclick="generateRandomUser()">
+
+                Next Random User
+
+            </button>
 
         </div>
 
     </div>
+
+    <!-- JS -->
+    <script src="js/randomuser.js"></script>
 
 </body>
 

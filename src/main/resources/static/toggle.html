@@ -3,12 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
     <title>Toggle</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="css/site.css">
+
     <link rel="stylesheet" href="css/card.css">
 </head>
 
@@ -17,26 +20,37 @@
     <!-- NAVBAR -->
     <div class="navbar">
 
-        <a href="index.html">Home</a>
+        <a href="index.html">
+            Home
+        </a>
 
-        <a href="card.html">Card</a>
+        <a href="card.html">
+            Card
+        </a>
 
-        <a class="active" href="toggle.html">Toggle</a>
+        <a class="active"
+           href="toggle.html">
+            Toggle
+        </a>
 
-        <a href="#">Contact</a>
+        <a href="randomuser.html">
+            Next Random User
+        </a>
 
     </div>
 
 
-    <!-- CARD -->
+    <!-- PROFILE CARD -->
     <div class="card">
 
+        <!-- IMAGE -->
         <img
             id="userImage"
             src="img/john_doe.png"
             alt="Profile"
         >
 
+        <!-- CONTENT -->
         <div class="card-content">
 
             <h2 id="userName">
@@ -48,13 +62,16 @@
             </p>
 
             <button onclick="toggleUser()">
+
                 Toggle
+
             </button>
 
         </div>
 
     </div>
 
+    <!-- JS -->
     <script src="js/toggle.js"></script>
 
 </body>
