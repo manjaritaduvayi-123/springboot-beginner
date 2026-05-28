@@ -1,56 +1,439 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Home</title>
+    <title>GitPulse</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/site.css">
+    <style>
+
+        body{
+            margin:0;
+            font-family:Arial, sans-serif;
+            background:#f2f2f2;
+        }
+
+        /* NAVBAR */
+
+        .navbar{
+            background:#333;
+            overflow:hidden;
+        }
+
+        .navbar a{
+            float:left;
+            color:white;
+            text-align:center;
+            padding:18px 24px;
+            text-decoration:none;
+            font-size:18px;
+        }
+
+        .navbar a:hover{
+            background:#555;
+        }
+
+        /* HOME SECTION */
+
+        #home-section{
+            padding:40px;
+        }
+
+        /* GITPULSE SECTION */
+
+        #gitpulse-section{
+
+            display:none;
+            padding:40px;
+            text-align:center;
+        }
+
+        .title{
+            font-size:60px;
+            color:#1a73e8;
+            margin-bottom:10px;
+        }
+
+        .subtitle{
+            font-size:22px;
+            margin-bottom:40px;
+        }
+
+        .search-box{
+
+            margin-bottom:40px;
+        }
+
+        input{
+
+            width:350px;
+            padding:14px;
+            border-radius:10px;
+            border:1px solid #ccc;
+            font-size:16px;
+        }
+
+        button{
+
+            padding:14px 22px;
+            background:#1a73e8;
+            color:white;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            font-size:16px;
+            margin-left:10px;
+        }
+
+        button:hover{
+            background:#0d5ec7;
+        }
+
+        /* PROFILE CARD */
+
+        .profile-card{
+
+            background:white;
+            width:400px;
+            margin:auto;
+            padding:30px;
+            border-radius:20px;
+            box-shadow:0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .profile-card img{
+
+            width:120px;
+            height:120px;
+            border-radius:50%;
+            margin-bottom:20px;
+        }
+
+        .profile-card h2{
+
+            margin:10px 0;
+        }
+
+        .profile-card p{
+
+            color:#555;
+            margin:8px 0;
+        }
+
+        .stats{
+
+            display:flex;
+            justify-content:space-around;
+            margin-top:20px;
+        }
+
+        .stat-box{
+
+            background:#f2f2f2;
+            padding:15px;
+            border-radius:12px;
+            width:100px;
+        }
+
+        .repo-section{
+
+            margin-top:40px;
+        }
+
+        .repo-card{
+
+            background:white;
+            width:500px;
+            margin:15px auto;
+            padding:20px;
+            border-radius:15px;
+            text-align:left;
+            box-shadow:0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .repo-card a{
+
+            color:#1a73e8;
+            font-size:20px;
+            text-decoration:none;
+            font-weight:bold;
+        }
+
+        .repo-card p{
+
+            color:#555;
+        }
+
+    </style>
 
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <div class="navbar">
+<!-- NAVBAR -->
 
-        <a class="active"
-           href="index.html">
-            Home
-        </a>
+<div class="navbar">
 
-        <a href="card.html">
-            Card
-        </a>
+    <a href="#"
+       onclick="showHome()">
 
-        <a href="toggle.html">
-            Toggle
-        </a>
+       Home
+    </a>
 
-        <a href="randomuser.html">
-            Next Random User
-        </a>
+    <a href="#">
+        Card
+    </a>
 
-        <a href="gitpulse.html">
-            GitPulse
-        </a>
+    <a href="#">
+        Toggle
+    </a>
+
+    <a href="#">
+        Next Random User
+    </a>
+
+    <a href="#"
+       onclick="showGitPulse()">
+
+       GitPulse
+    </a>
+
+</div>
+
+<!-- HOME SECTION -->
+
+<div id="home-section">
+
+    <h1>Welcome</h1>
+
+</div>
+
+<!-- GITPULSE SECTION -->
+
+<div id="gitpulse-section">
+
+    <div class="title">
+        GitPulse
+    </div>
+
+    <div class="subtitle">
+        GitHub Developer Portfolio Analyzer
+    </div>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="username-input"
+            placeholder="Enter GitHub Username"
+        >
+
+        <button onclick="analyzeProfile()">
+            Analyze
+        </button>
 
     </div>
 
+    <div id="profile-result"></div>
 
-    <!-- HOME CONTENT -->
-    <h1 style="margin-left:20px; margin-top:20px;">
+    <div class="repo-section"
+         id="repo-section">
 
-        Welcome
+    </div>
 
-    </h1>
+</div>
+
+<script>
+
+    function showGitPulse(){
+
+        document
+            .getElementById("home-section")
+            .style.display = "none";
+
+        document
+            .getElementById("gitpulse-section")
+            .style.display = "block";
+    }
+
+    function showHome(){
+
+        document
+            .getElementById("home-section")
+            .style.display = "block";
+
+        document
+            .getElementById("gitpulse-section")
+            .style.display = "none";
+    }
+
+    async function analyzeProfile(){
+
+        const username =
+            document
+            .getElementById("username-input")
+            .value;
+
+        if(username === ""){
+
+            alert("Enter username");
+            return;
+        }
+
+        try{
+
+            /* USER API */
+
+            const userResponse =
+                await fetch(
+                    `http://localhost:8080/github/${username}`
+                );
+
+            if(!userResponse.ok){
+
+                alert("User not found");
+                return;
+            }
+
+            const user =
+                await userResponse.json();
+
+            /* REPOS API */
+
+            const repoResponse =
+                await fetch(
+                    `http://localhost:8080/github/${username}/repos`
+                );
+
+            const repos =
+                await repoResponse.json();
+
+            /* PROFILE */
+
+            document
+                .getElementById("profile-result")
+                .innerHTML = `
+
+                <div class="profile-card">
+
+                    <img src="${user.avatar_url}">
+
+                    <h2>
+                        ${user.name || user.login}
+                    </h2>
+
+                    <p>
+                        @${user.login}
+                    </p>
+
+                    <p>
+                        ${user.bio || ""}
+                    </p>
+
+                    <div class="stats">
+
+                        <div class="stat-box">
+
+                            <h3>
+                                ${user.followers}
+                            </h3>
+
+                            <p>
+                                Followers
+                            </p>
+
+                        </div>
+
+                        <div class="stat-box">
+
+                            <h3>
+                                ${user.public_repos}
+                            </h3>
+
+                            <p>
+                                Repositories
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <a href="${user.html_url}"
+                       target="_blank">
+
+                       View GitHub Profile
+
+                    </a>
+
+                </div>
+            `;
+
+            /* REPOSITORIES */
+
+            let repoHTML = "";
+
+            repos
+            .sort(
+                (a,b)=>
+                b.stargazers_count
+                -
+                a.stargazers_count
+            )
+            .slice(0,5)
+            .forEach(repo => {
+
+                repoHTML += `
+
+                    <div class="repo-card">
+
+                        <a href="${repo.html_url}"
+                           target="_blank">
+
+                           ${repo.name}
+
+                        </a>
+
+                        <p>
+                            ${repo.description || "No Description"}
+                        </p>
+
+                        <p>
+                            ⭐ Stars:
+                            ${repo.stargazers_count}
+                        </p>
+
+                        <p>
+                            🍴 Forks:
+                            ${repo.forks_count}
+                        </p>
+
+                        <p>
+                            💻 Language:
+                            ${repo.language || "N/A"}
+                        </p>
+
+                    </div>
+                `;
+            });
+
+            document
+                .getElementById("repo-section")
+                .innerHTML = repoHTML;
+
+        }
+        catch(error){
+
+            console.log(error);
+
+            alert("Backend not running");
+        }
+    }
+
+</script>
 
 </body>
-
 </html>
