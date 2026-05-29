@@ -1,4 +1,4 @@
-package com.Manjari....;
+package com.Manjari;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -11,8 +11,7 @@ public class GitHubController {
     @GetMapping("/{username}")
     public Object getUser(@PathVariable String username) {
 
-        String url =
-                "https://api.github.com/users/" + username;
+        String url = "https://api.github.com/users/" + username;
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -22,10 +21,7 @@ public class GitHubController {
     @GetMapping("/repos/{username}")
     public Object getRepos(@PathVariable String username) {
 
-        String url =
-                "https://api.github.com/users/"
-                        + username +
-                        "/repos";
+        String url = "https://api.github.com/users/" + username + "/repos";
 
         RestTemplate restTemplate = new RestTemplate();
 
