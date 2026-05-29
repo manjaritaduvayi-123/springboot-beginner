@@ -1,6 +1,8 @@
 package com.Manjari.WebProject;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
@@ -8,23 +10,67 @@ import org.springframework.web.client.RestTemplate;
 @CrossOrigin("*")
 public class GitHubController {
 
+    private final RestTemplate restTemplate = new RestTemplate();
+
     @GetMapping("/{username}")
-    public Object getUser(@PathVariable String username) {
+    public ResponseEntity<?> getUser(@PathVariable String username) {
 
-        String url = "https://api.github.com/users/" + username;
+        try {
 
-        RestTemplate restTemplate = new RestTemplate();
+            String url =
+                    "https://api.github.com/users/" + username;
 
-        return restTemplate.getForObject(url, Object.class);
+            Object user =
+                    restTemplate.getForObject(url, Object.class);
+
+            return ResponseEntity.ok(user);
+
+        }
+        catch (HttpClientErrorException.NotFound e) {
+
+            return ResponseEntity
+                    .status(404)
+                    .body("GitHub user not found");
+
+        }
+        catch (Exception e) {
+
+            return ResponseEntity
+                    .status(500)
+                    .body("Server Error: " + e.getMessage());
+
+        }
     }
 
     @GetMapping("/repos/{username}")
-    public Object getRepos(@PathVariable String username) {
+    public ResponseEntity<?> getRepos(@PathVariable String username) {
 
-        String url = "https://api.github.com/users/" + username + "/repos";
+        try {
 
-        RestTemplate restTemplate = new RestTemplate();
+            String url =
+                    "https://api.github.com/users/"
+                            + username
+                            + "/repos";
 
-        return restTemplate.getForObject(url, Object.class);
+            Object repos =
+                    restTemplate.getForObject(url, Object.class);
+
+            return ResponseEntity.ok(repos);
+
+        }
+        catch (HttpClientErrorException.NotFound e) {
+
+            return ResponseEntity
+                    .status(404)
+                    .body("Repositories not found");
+
+        }
+        catch (Exception e) {
+
+            return ResponseEntity
+                    .status(500)
+                    .body("Server Error: " + e.getMessage());
+
+        }
     }
 }
