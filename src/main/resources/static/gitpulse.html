@@ -265,8 +265,7 @@ width:100%;
 
 <script>
 
-const BACKEND_URL =
-"https://springboot-beginner-tn7l.onrender.com";
+const BACKEND_URL = "";
 
 let chartInstance = null;
 
@@ -309,11 +308,10 @@ alert(error.message);
 }
 
 }*/
-<script>
 async function analyzeProfile() {
 
     const username =
-        document.getElementById("username-input").value.trim();
+        document.getElementById("username").value.trim();
 
     if (!username) {
         alert("Enter GitHub username");
@@ -334,14 +332,14 @@ async function analyzeProfile() {
 
         window.open(user.html_url, "_blank");
 
-    }
-    catch (error) {
+    } catch (error) {
 
         console.error(error);
         alert("Error connecting to GitHub");
 
     }
 }
+
 </script>
 
 function renderProfile(user,repos){
