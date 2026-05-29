@@ -315,15 +315,12 @@ async function analyzeProfile() {
         .value
         .trim();
 
-    if (username === "") {
-
+    if (!username) {
         alert("Enter username");
         return;
     }
 
     try {
-
-        // USER API
 
         const userResponse =
             await fetch(
@@ -331,14 +328,11 @@ async function analyzeProfile() {
             );
 
         if (!userResponse.ok) {
-
             throw new Error("User not found");
         }
 
         const user =
             await userResponse.json();
-
-        // REPOS API
 
         const repoResponse =
             await fetch(
@@ -354,13 +348,11 @@ async function analyzeProfile() {
     catch (error) {
 
         console.error(error);
+        alert(error.message);
 
-        alert(
-            "Backend not running or user not found"
-        );
     }
 }
-
+        
 function renderProfile(user,repos){
 
 document.getElementById("profileCard")
