@@ -309,46 +309,40 @@ alert(error.message);
 }
 
 }*/
+<script>
 async function analyzeProfile() {
 
     const username =
         document.getElementById("username-input").value.trim();
 
-    alert("Searching for: " + username);
+    if (!username) {
+        alert("Enter GitHub username");
+        return;
+    }
 
     try {
 
-        const response = await fetch(
-            `https://api.github.com/users/${username}`
-        );
+        const response =
+            await fetch(`https://api.github.com/users/${username}`);
 
-        alert("Status = " + response.status);
-
-        const data = await response.json();
-
-        console.log(data);
-
-        if (response.ok) {
-
-            alert("User Found: " + data.login);
-
-            window.open(
-                data.html_url,
-                "_blank"
-            );
-
-        } else {
-
-            alert("GitHub says user not found");
-
+        if (!response.ok) {
+            alert("User not found");
+            return;
         }
 
-    } catch (error) {
+        const user = await response.json();
 
-        alert("Error: " + error.message);
+        window.open(user.html_url, "_blank");
+
+    }
+    catch (error) {
+
+        console.error(error);
+        alert("Error connecting to GitHub");
 
     }
 }
+</script>
 
 function renderProfile(user,repos){
 
