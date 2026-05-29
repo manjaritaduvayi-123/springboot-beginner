@@ -1,4 +1,4 @@
-package com.Manjari;
+package com.Manjari.WebProject;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
