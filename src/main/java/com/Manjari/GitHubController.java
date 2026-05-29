@@ -10,18 +10,25 @@ import org.springframework.web.client.RestTemplate;
 @CrossOrigin("*")
 public class GitHubController {
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate =
+            new RestTemplate();
 
     @GetMapping("/{username}")
-    public ResponseEntity<?> getUser(@PathVariable String username) {
+    public ResponseEntity<?> getUser(
+            @PathVariable String username
+    ) {
 
         try {
 
             String url =
-                    "https://api.github.com/users/" + username;
+                    "https://api.github.com/users/"
+                            + username;
 
             Object user =
-                    restTemplate.getForObject(url, Object.class);
+                    restTemplate.getForObject(
+                            url,
+                            Object.class
+                    );
 
             return ResponseEntity.ok(user);
 
@@ -31,19 +38,20 @@ public class GitHubController {
             return ResponseEntity
                     .status(404)
                     .body("GitHub user not found");
-
         }
         catch (Exception e) {
 
             return ResponseEntity
                     .status(500)
-                    .body("Server Error: " + e.getMessage());
-
+                    .body("Server Error: "
+                            + e.getMessage());
         }
     }
 
-    @GetMapping("/repos/{username}")
-    public ResponseEntity<?> getRepos(@PathVariable String username) {
+    @GetMapping("/{username}/repos")
+    public ResponseEntity<?> getRepos(
+            @PathVariable String username
+    ) {
 
         try {
 
@@ -53,7 +61,10 @@ public class GitHubController {
                             + "/repos";
 
             Object repos =
-                    restTemplate.getForObject(url, Object.class);
+                    restTemplate.getForObject(
+                            url,
+                            Object.class
+                    );
 
             return ResponseEntity.ok(repos);
 
@@ -63,14 +74,13 @@ public class GitHubController {
             return ResponseEntity
                     .status(404)
                     .body("Repositories not found");
-
         }
         catch (Exception e) {
 
             return ResponseEntity
                     .status(500)
-                    .body("Server Error: " + e.getMessage());
-
+                    .body("Server Error: "
+                            + e.getMessage());
         }
     }
 }
