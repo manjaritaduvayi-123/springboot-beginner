@@ -16,29 +16,24 @@ public class GitHubController {
     public ResponseEntity<?> getUser(@PathVariable String username) {
 
         try {
-
-            String url =
-                    "https://api.github.com/users/" + username;
+            String url = "https://api.github.com/users/" + username;
 
             Object user =
                     restTemplate.getForObject(url, Object.class);
 
             return ResponseEntity.ok(user);
 
-        }
-        catch (HttpClientErrorException.NotFound e) {
+        } catch (HttpClientErrorException.NotFound e) {
 
             return ResponseEntity
                     .status(404)
                     .body("GitHub user not found");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
             return ResponseEntity
                     .status(500)
                     .body("Server Error: " + e.getMessage());
-
         }
     }
 
@@ -46,7 +41,6 @@ public class GitHubController {
     public ResponseEntity<?> getRepos(@PathVariable String username) {
 
         try {
-
             String url =
                     "https://api.github.com/users/"
                             + username
@@ -57,20 +51,17 @@ public class GitHubController {
 
             return ResponseEntity.ok(repos);
 
-        }
-        catch (HttpClientErrorException.NotFound e) {
+        } catch (HttpClientErrorException.NotFound e) {
 
             return ResponseEntity
                     .status(404)
                     .body("Repositories not found");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
             return ResponseEntity
                     .status(500)
                     .body("Server Error: " + e.getMessage());
-
         }
     }
 }
