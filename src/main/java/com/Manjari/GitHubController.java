@@ -37,7 +37,7 @@ public class GitHubController {
         }
     }
 
-    @GetMapping("/repos/{username}")
+    @GetMapping("/{username}/repos")
     public ResponseEntity<?> getRepos(@PathVariable String username) {
 
         try {
