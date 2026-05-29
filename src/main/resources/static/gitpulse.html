@@ -270,7 +270,7 @@ const BACKEND_URL =
 
 let chartInstance = null;
 
-async function analyzeProfile(){
+/*async function analyzeProfile(){
 
 const username =
 document.getElementById("username").value.trim();
@@ -308,6 +308,35 @@ alert(error.message);
 
 }
 
+}*/
+async function analyzeProfile() {
+
+    const username =
+        document.getElementById("username-input").value.trim();
+
+    if (!username) {
+        alert("Enter a GitHub username");
+        return;
+    }
+
+    window.open(
+        `https://github.com/${username}`,
+        "_blank"
+    );
+
+    try {
+
+        const [user, repos] = await Promise.all([
+            ghFetch(`https://api.github.com/users/${username}`),
+            ghFetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`)
+        ]);
+
+        renderProfile(user, repos, [], []);
+
+    } catch (err) {
+
+        alert(err.message);
+    }
 }
 
 function renderProfile(user,repos){
