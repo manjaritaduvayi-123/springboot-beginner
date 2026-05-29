@@ -315,12 +315,15 @@ async function analyzeProfile() {
         .value
         .trim();
 
-    if (!username) {
+    if (username === "") {
+
         alert("Enter username");
         return;
     }
 
     try {
+
+        // USER API
 
         const userResponse =
             await fetch(
@@ -328,30 +331,8 @@ async function analyzeProfile() {
             );
 
         if (!userResponse.ok) {
+
             throw new Error("User not found");
-        }
-
-        const user =
-            await userResponse.json();
-
-        const repoResponse =
-            await fetch(
-                `http://localhost:8080/github/${username}/repos`
-            );
-
-        const repos =
-            await repoResponse.json();
-
-        renderProfile(user, repos);
-
-    }
-    catch (error) {
-
-        console.error(error);
-        alert(error.message);
-
-    }
-}
         
 function renderProfile(user,repos){
 
