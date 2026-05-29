@@ -314,28 +314,39 @@ async function analyzeProfile() {
     const username =
         document.getElementById("username-input").value.trim();
 
-    if (!username) {
-        alert("Enter a GitHub username");
-        return;
-    }
-
-    window.open(
-        `https://github.com/${username}`,
-        "_blank"
-    );
+    alert("Searching for: " + username);
 
     try {
 
-        const [user, repos] = await Promise.all([
-            ghFetch(`https://api.github.com/users/${username}`),
-            ghFetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`)
-        ]);
+        const response = await fetch(
+            `https://api.github.com/users/${username}`
+        );
 
-        renderProfile(user, repos, [], []);
+        alert("Status = " + response.status);
 
-    } catch (err) {
+        const data = await response.json();
 
-        alert(err.message);
+        console.log(data);
+
+        if (response.ok) {
+
+            alert("User Found: " + data.login);
+
+            window.open(
+                data.html_url,
+                "_blank"
+            );
+
+        } else {
+
+            alert("GitHub says user not found");
+
+        }
+
+    } catch (error) {
+
+        alert("Error: " + error.message);
+
     }
 }
 
